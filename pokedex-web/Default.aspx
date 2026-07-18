@@ -3,4 +3,5 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Hola!</h1>
+    <p>Llegaste al Pokedex Web, tu lugar Pokemon...</p>
 </asp:Content>
