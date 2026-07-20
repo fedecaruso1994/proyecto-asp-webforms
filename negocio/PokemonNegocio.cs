@@ -10,7 +10,6 @@ namespace negocio
 {
     public class PokemonNegocio
     {
-
         public List<Pokemon> listar()
         {
             List<Pokemon> lista = new List<Pokemon>();
@@ -38,7 +37,7 @@ namespace negocio
 
                     //if(!(lector.IsDBNull(lector.GetOrdinal("UrlImagen"))))
                     //    aux.UrlImagen = (string)lector["UrlImagen"];
-                    if(!(lector["UrlImagen"] is DBNull))
+                    if (!(lector["UrlImagen"] is DBNull))
                         aux.UrlImagen = (string)lector["UrlImagen"];
 
                     aux.Tipo = new Elemento();
@@ -60,7 +59,7 @@ namespace negocio
             }
 
         }
-        public List<Pokemon>listarConSP() 
+        public List<Pokemon> listarConSP()
         {
             List<Pokemon> lista = new List<Pokemon>();
             AccesoDatos datos = new AccesoDatos();
@@ -152,7 +151,7 @@ namespace negocio
             try
             {
                 string consulta = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id From POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo And D.Id = P.IdDebilidad And P.Activo = 1 And ";
-                if(campo == "Número")
+                if (campo == "Número")
                 {
                     switch (criterio)
                     {
@@ -167,7 +166,7 @@ namespace negocio
                             break;
                     }
                 }
-                else if(campo == "Nombre")
+                else if (campo == "Nombre")
                 {
                     switch (criterio)
                     {
@@ -234,7 +233,7 @@ namespace negocio
             {
                 AccesoDatos datos = new AccesoDatos();
                 datos.setearConsulta("delete from pokemons where id = @id");
-                datos.setearParametro("@id",id);
+                datos.setearParametro("@id", id);
                 datos.ejecutarAccion();
 
             }
@@ -258,7 +257,5 @@ namespace negocio
                 throw ex;
             }
         }
-
-
     }
 }
