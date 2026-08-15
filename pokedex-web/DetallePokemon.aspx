@@ -16,6 +16,10 @@
 
             </div>
             <div class="mb-3">
+                <label for="txtNumero" class="form-label">Número</label>
+                <asp:TextBox runat="server" ID="txtNumero" CssClass="form-control" />
+            </div>
+            <div class="mb-3">
                 <label for="txtDescripcion" class="form-label">Descripcion</label>
                 <asp:TextBox runat="server" TextMode="MultiLine" ID="txtDescripcion" CssClass="form-control" />
             </div>
