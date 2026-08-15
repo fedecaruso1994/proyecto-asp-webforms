@@ -5,7 +5,7 @@
     <h1>Lista de Pokemons</h1>
     <asp:GridView 
 
-        ID="dgvPokemons"  AllowPaging="true" PageSize="2" 
+        ID="dgvPokemons"  AllowPaging="true" PageSize="10" 
         PagerStyle-CssClass="table-pager" 
         PagerSettings-Mode="NumericFirstLast"
         OnPageIndexChanging="dgvPokemons_PageIndexChanging" runat="server" DataKeyNames="Id" 

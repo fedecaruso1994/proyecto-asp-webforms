@@ -38,7 +38,7 @@ namespace pokedex_web
                     Numero = int.Parse(txtNumero.Text),
                     Nombre = txtNombre.Text,
                     Descripcion = txtDescripcion.Text,
-                    // agregar url imagen 
+                    UrlImagen = txtUrl.Text,
                     Tipo = new Elemento
                     {
                         Id = int.Parse(ddlTipo.SelectedValue)
@@ -50,7 +50,7 @@ namespace pokedex_web
 
                 };
 
-                negocio.agregar(nuevo); // Esto no va a andarp orque falta la imagen 
+                negocio.agregarConSP(nuevo);  
                 Response.Redirect("PokemonList.aspx", false);
 
 
@@ -68,6 +68,11 @@ namespace pokedex_web
             combo.DataTextField = "Descripcion";
             combo.DataValueField = "Id";
             combo.DataBind();
+        }
+
+        protected void txtUrl_TextChanged(object sender, EventArgs e)
+        {
+            imgDetalle.ImageUrl = txtUrl.Text;
         }
     }
 }
