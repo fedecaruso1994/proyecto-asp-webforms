@@ -91,7 +91,7 @@
                 CssClass="btn btn-primary"
                 runat="server" />
 
-            <a href="Default.aspx" class="btn btn-secondary ms-2">Cancelar</a>
+            <a href="PokemonList.aspx" class="btn btn-secondary ms-2">Cancelar</a>
         </div>
     </div>
 </asp:Content>
