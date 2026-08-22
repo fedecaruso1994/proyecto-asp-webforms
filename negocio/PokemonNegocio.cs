@@ -21,7 +21,7 @@ namespace negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=POKEDEX_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id From POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo And D.Id = P.IdDebilidad And P.Activo = 1 ";
+                comando.CommandText = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id From POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo And D.Id = P.IdDebilidad ";
                 if (id != "")
                     comando.CommandText += " and P.Id = " + id; 
                 comando.Connection = conexion;
@@ -31,11 +31,13 @@ namespace negocio
 
                 while (lector.Read())
                 {
-                    Pokemon aux = new Pokemon();
-                    aux.Id = (int)lector["Id"];
-                    aux.Numero = lector.GetInt32(0);
-                    aux.Nombre = (string)lector["Nombre"];
-                    aux.Descripcion = (string)lector["Descripcion"];
+                    Pokemon aux = new Pokemon
+                    {
+                        Id = (int)lector["Id"],
+                        Numero = lector.GetInt32(0),
+                        Nombre = (string)lector["Nombre"],
+                        Descripcion = (string)lector["Descripcion"]
+                    };
 
                     //if(!(lector.IsDBNull(lector.GetOrdinal("UrlImagen"))))
                     //    aux.UrlImagen = (string)lector["UrlImagen"];
