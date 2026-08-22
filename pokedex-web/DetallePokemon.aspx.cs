@@ -4,14 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace pokedex_web
 {
     public partial class DetallePokemon : System.Web.UI.Page
     {
+        public bool ConfirmaEliminacion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Enabled = false;
+            ConfirmaEliminacion = false;
             try
             {
                 // configuracion incial de la pantalla 
@@ -99,6 +102,30 @@ namespace pokedex_web
         protected void txtUrl_TextChanged(object sender, EventArgs e)
         {
             imgDetalle.ImageUrl = txtUrl.Text;
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ConfirmaEliminacion = true;
+        }
+
+        protected void ConfirmarEliminacion_Click(object sender, EventArgs e)
+        {
+            if (chkConfiraEliminacion.Checked)
+            {
+                try
+                {
+                    PokemonNegocio negocio = new PokemonNegocio();
+                    negocio.eliminar(int.Parse(txtId.Text));
+                    Response.Redirect("PokemonList.aspx", false);
+
+                }
+                catch (Exception ex)
+                {
+                    Session.Add("error", ex);
+                    //luego agregar un redireccion a una pantalla de error. 
+                }
+            }
         }
     }
 }

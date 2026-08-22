@@ -94,4 +94,28 @@
             <a href="PokemonList.aspx" class="btn btn-secondary ms-2">Cancelar</a>
         </div>
     </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="mb-3">
+                <asp:Button
+                    Text="Eliminar"
+                    ID="btnEliminar"
+                    OnClick="btnEliminar_Click"
+                    CssClass="btn btn-danger"
+                    runat="server" />
+            </div>
+            <% if (ConfirmaEliminacion)
+                {%>
+            <div class="mb-3">
+                <asp:CheckBox Text="Confirmar eliminacion" ID="chkConfiraEliminacion" runat="server" />
+                <asp:Button
+                    Text="Eliminar"
+                    ID="ConfirmarEliminacion"
+                    OnClick="ConfirmarEliminacion_Click"
+                    CssClass="btn btn-danger"
+                    runat="server" />
+            </div>
+            <%} %>
+        </div>
+    </div>
 </asp:Content>
