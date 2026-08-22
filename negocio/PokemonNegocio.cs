@@ -77,20 +77,27 @@ namespace negocio
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
-                    Pokemon aux = new Pokemon();
-                    aux.Id = (int)datos.Lector["Id"];
-                    aux.Numero = datos.Lector.GetInt32(0);
-                    aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    Pokemon aux = new Pokemon
+                    {
+                        Id = (int)datos.Lector["Id"],
+                        Numero = datos.Lector.GetInt32(0),
+                        Nombre = (string)datos.Lector["Nombre"],
+                        Descripcion = (string)datos.Lector["Descripcion"],
+                        Activo = (bool)datos.Lector["Activo"]
+                    };
                     if (!(datos.Lector["UrlImagen"] is DBNull))
                         aux.UrlImagen = (string)datos.Lector["UrlImagen"];
 
-                    aux.Tipo = new Elemento();
-                    aux.Tipo.Id = (int)datos.Lector["IdTipo"];
-                    aux.Tipo.Descripcion = (string)datos.Lector["Tipo"];
-                    aux.Debilidad = new Elemento();
-                    aux.Debilidad.Id = (int)datos.Lector["IdDebilidad"];
-                    aux.Debilidad.Descripcion = (string)datos.Lector["Debilidad"];
+                    aux.Tipo = new Elemento
+                    {
+                        Id = (int)datos.Lector["IdTipo"],
+                        Descripcion = (string)datos.Lector["Tipo"]
+                    };
+                    aux.Debilidad = new Elemento
+                    {
+                        Id = (int)datos.Lector["IdDebilidad"],
+                        Descripcion = (string)datos.Lector["Debilidad"]
+                    };
 
                     lista.Add(aux);
                 }

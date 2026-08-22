@@ -92,6 +92,12 @@
                 runat="server" />
 
             <a href="PokemonList.aspx" class="btn btn-secondary ms-2">Cancelar</a>
+            <asp:Button
+                Text="Inactivar"
+                ID="btnInactivar"
+                onclick="btnInactivar_Click"
+                CssClass="btn btn-warning ms-3"
+                runat="server" />
         </div>
     </div>
     <div class="row">
