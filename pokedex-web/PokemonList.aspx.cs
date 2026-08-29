@@ -1,5 +1,7 @@
-﻿using negocio;
+﻿using dominio;
+using negocio;
 using System;
+using System.Collections.Generic;
 using System.Web.UI.WebControls;
 
 namespace pokedex_web
@@ -18,7 +20,7 @@ namespace pokedex_web
             {
                 //Session["error"] = ex;
                 //Response.Redirect("Error.aspx");
-                throw;
+                throw ex;
             }
         }
 
@@ -42,7 +44,15 @@ namespace pokedex_web
         private void cargarGrilla()
         {
             PokemonNegocio negocio = new PokemonNegocio();
-            dgvPokemons.DataSource = negocio.listarConSP();
+            Session.Add("listaPokemon", negocio.listarConSP());
+            dgvPokemons.DataSource = Session["listaPokemon"];
+            dgvPokemons.DataBind();
+        }
+
+        protected void filtro_TextChanged(object sender, EventArgs e)
+        {
+            List<Pokemon> listaFiltrada = ((List<Pokemon>)Session["listaPokemon"]).FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()) );
+            dgvPokemons.DataSource = listaFiltrada;
             dgvPokemons.DataBind();
         }
     }
