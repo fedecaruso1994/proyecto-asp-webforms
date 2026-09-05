@@ -211,13 +211,13 @@ namespace negocio
             }
         }
 
-        public List<Pokemon> filtrar(string campo, string criterio, string filtro)
+        public List<Pokemon> filtrar(string campo, string criterio, string filtro, string estado)
         {
             List<Pokemon> lista = new List<Pokemon>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id From POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo And D.Id = P.IdDebilidad And P.Activo = 1 And ";
+                string consulta = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id, P.Activo From POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo And D.Id = P.IdDebilidad And ";
                 if (campo == "Número")
                 {
                     switch (criterio)
@@ -253,35 +253,47 @@ namespace negocio
                     switch (criterio)
                     {
                         case "Comienza con":
-                            consulta += "P.Descripcion like '" + filtro + "%' ";
+                            consulta += "E.Descripcion like '" + filtro + "%' ";
                             break;
                         case "Termina con":
-                            consulta += "P.Descripcion like '%" + filtro + "'";
+                            consulta += "E.Descripcion like '%" + filtro + "'";
                             break;
                         default:
-                            consulta += "P.Descripcion like '%" + filtro + "%'";
+                            consulta += "E.Descripcion like '%" + filtro + "%'";
                             break;
                     }
                 }
+
+                if (estado == "Activo")
+                    consulta += " and P.Activo = 1";
+                else if (estado == "Inactivo")
+                    consulta += " and P.Activo = 0";
 
                 datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
-                    Pokemon aux = new Pokemon();
-                    aux.Id = (int)datos.Lector["Id"];
-                    aux.Numero = datos.Lector.GetInt32(0);
-                    aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    Pokemon aux = new Pokemon
+                    {
+                        Id = (int)datos.Lector["Id"],
+                        Numero = datos.Lector.GetInt32(0),
+                        Nombre = (string)datos.Lector["Nombre"],
+                        Descripcion = (string)datos.Lector["Descripcion"]
+                    };
                     if (!(datos.Lector["UrlImagen"] is DBNull))
                         aux.UrlImagen = (string)datos.Lector["UrlImagen"];
 
-                    aux.Tipo = new Elemento();
-                    aux.Tipo.Id = (int)datos.Lector["IdTipo"];
-                    aux.Tipo.Descripcion = (string)datos.Lector["Tipo"];
-                    aux.Debilidad = new Elemento();
-                    aux.Debilidad.Id = (int)datos.Lector["IdDebilidad"];
-                    aux.Debilidad.Descripcion = (string)datos.Lector["Debilidad"];
+                    aux.Tipo = new Elemento
+                    {
+                        Id = (int)datos.Lector["IdTipo"],
+                        Descripcion = (string)datos.Lector["Tipo"]
+                    };
+                    aux.Debilidad = new Elemento
+                    {
+                        Id = (int)datos.Lector["IdDebilidad"],
+                        Descripcion = (string)datos.Lector["Debilidad"]
+                    };
+                    aux.Activo = (bool)datos.Lector["Activo"];
 
                     lista.Add(aux);
                 }
