@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
     <Compile Include="ElementoNegocio.cs" />
+    <Compile Include="EmailService.cs" />
     <Compile Include="PokemonNegocio.cs" />
     <Compile Include="UsuarioNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

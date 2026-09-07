@@ -28,6 +28,7 @@
                         <div class="navbar-nav ms-auto">
                             <asp:HyperLink runat="server" ID="lnkLogin" CssClass="nav-link" NavigateUrl="~/Paginas/Login.aspx">Login</asp:HyperLink>
                             <asp:LinkButton runat="server" ID="lnkLogout" CssClass="nav-link" OnClick="lnkLogout_Click">Cerrar sesión</asp:LinkButton>
+                            <asp:HyperLink runat="server" ID="lnkFormContact" CssClass="nav-link" NavigateUrl="~/Paginas/FormContacto.aspx">Contacto</asp:HyperLink>
                         </div>
                     </div>
                 </div>
