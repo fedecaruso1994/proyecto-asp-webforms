@@ -68,29 +68,45 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Styles.css" />
-    <Content Include="Default.aspx" />
-    <Content Include="DetallePokemon.aspx" />
+    <Content Include="Paginas\Default.aspx" />
+    <Content Include="Paginas\DetallePokemon.aspx" />
+    <Content Include="Paginas\Error.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="PokemonList.aspx" />
+    <Content Include="Paginas\Login.aspx" />
+    <Content Include="Paginas\PokemonList.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Default.aspx.cs">
+    <Compile Include="Paginas\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
+    <Compile Include="Paginas\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DetallePokemon.aspx.cs">
+    <Compile Include="Paginas\DetallePokemon.aspx.cs">
       <DependentUpon>DetallePokemon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DetallePokemon.aspx.designer.cs">
+    <Compile Include="Paginas\DetallePokemon.aspx.designer.cs">
       <DependentUpon>DetallePokemon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
@@ -99,12 +115,15 @@
     <Compile Include="Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
-    <Compile Include="PokemonList.aspx.cs">
+    <Compile Include="Paginas\PokemonList.aspx.cs">
       <DependentUpon>PokemonList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PokemonList.aspx.designer.cs">
+    <Compile Include="Paginas\PokemonList.aspx.designer.cs">
       <DependentUpon>PokemonList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\PaginaSegura.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

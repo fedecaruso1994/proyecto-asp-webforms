@@ -45,6 +45,7 @@
     <Compile Include="Elemento.cs" />
     <Compile Include="Entrenador.cs" />
     <Compile Include="Pokemon.cs" />
+    <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

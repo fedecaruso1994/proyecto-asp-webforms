@@ -8,8 +8,13 @@ using System.Xml.Linq;
 
 namespace pokedex_web
 {
-    public partial class DetallePokemon : System.Web.UI.Page
+    public partial class DetallePokemon : PaginaSegura
     {
+        protected override bool RequiereAdmin
+        {
+            get { return true; }
+        }
+
         public bool ConfirmaEliminacion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -6,9 +6,13 @@ using System.Web.UI.WebControls;
 
 namespace pokedex_web
 {
-    public partial class PokemonList : System.Web.UI.Page
+    public partial class PokemonList : PaginaSegura
     {
-       
+        protected override bool RequiereAdmin
+        {
+            get { return true; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try

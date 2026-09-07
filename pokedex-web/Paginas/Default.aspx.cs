@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 
 namespace pokedex_web
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class Default : PaginaSegura
     {
         protected void Page_Load(object sender, EventArgs e)
         {
