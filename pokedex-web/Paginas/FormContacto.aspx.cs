@@ -13,10 +13,10 @@ namespace pokedex_web.Paginas
         protected void btnEnviar_Click(object sender, EventArgs e)
         {
             EmailService emailService = new EmailService();
-            //emailService.armarCorreo(txtMail.Text, txtAsunto.Text, txtMensaje.Text);
+            emailService.armarCorreo(txtMail.Text, txtAsunto.Text, txtMensaje.Text);
             try
             {
-                //emailService.enviarEmail();
+                emailService.enviarEmail();
             }
             catch (Exception ex)
             {

@@ -4,3 +4,6 @@ obj/
 packages/
 *.user
 *.suo
+CLAUDE.md
+.claude/
+.mcp.json
